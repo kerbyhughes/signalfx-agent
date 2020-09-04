@@ -22,6 +22,7 @@ steps:
   displayName: 'Install pytest'
   condition: and(ne(variables.hasChanges, 'false'), ne(variables.hasChanges, False))
 - powershell: |
+    $PSVersionTable
     mkdir test_output -ea 0
     $msi_path = ""
     $nupkg_path = ""

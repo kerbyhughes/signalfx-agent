@@ -237,7 +237,7 @@ def run_win_command(cmd, returncodes=None, shell=True, **kwargs):
 def get_win_agent_version(agent_path=WIN_AGENT_PATH):
     proc = run_win_command([agent_path, "-version"])
     output = proc.stdout.decode("utf-8")
-    match = re.match("^.+?: (.+)?,", output)
+    match = re.search("^agent-version: (.+)?,", output, re.MULTILINE)
     assert match and match.group(1).strip(), "failed to parse agent version from command output:\n%s" % output
     return match.group(1).strip()
 
